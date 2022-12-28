@@ -15,9 +15,10 @@ public class UserServiceImpl implements UserService {
 	private UserRepo repo;
 
 	@Override
-	public UserDto createUser(UserDto user) {
-
-		return null;
+	public UserDto createUser(UserDto userDto) {
+		User user = this.dtoToUser(userDto);
+		User savedUser = this.repo.save(user);
+		return this.userToDto(savedUser);
 	}
 
 	@Override
@@ -44,7 +45,7 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
-	private User dtoToUser(UserDto userDto) {
+	public User dtoToUser(UserDto userDto) {
 
 		User user = new User();
 		user.setId(userDto.getId());
@@ -54,6 +55,17 @@ public class UserServiceImpl implements UserService {
 		user.setAbout(userDto.getAbout());
 
 		return user;
+
+	}
+
+	public UserDto userToDto(User user) {
+		UserDto userDto = new UserDto();
+		userDto.setId(user.getId());
+		userDto.setName(user.getName());
+		userDto.setEmail(user.getEmail());
+		userDto.setPassword(user.getPassword());
+		userDto.setAbout(user.getAbout());
+		return userDto;
 
 	}
 

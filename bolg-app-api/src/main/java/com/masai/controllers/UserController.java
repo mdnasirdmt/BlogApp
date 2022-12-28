@@ -2,6 +2,7 @@ package com.masai.controllers;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,8 @@ import com.masai.exceptions.ApiResponse;
 import com.masai.payloads.UserDto;
 import com.masai.services.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -28,7 +31,7 @@ public class UserController {
 
 	// save user// http://localhost:9090/api/users/
 	@PostMapping("/")
-	public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
+	public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
 		UserDto createUserDto = this.service.createUser(userDto);
 
 		return new ResponseEntity<UserDto>(createUserDto, HttpStatus.CREATED);
@@ -36,7 +39,7 @@ public class UserController {
 
 	// update user// http://localhost:9090/api/users/1
 	@PutMapping("/{userId}")
-	public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto, @PathVariable Integer userId) {
+	public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto userDto, @PathVariable Integer userId) {
 		UserDto user = this.service.updateUser(userDto, userId);
 		return new ResponseEntity<UserDto>(user, HttpStatus.OK);
 	}

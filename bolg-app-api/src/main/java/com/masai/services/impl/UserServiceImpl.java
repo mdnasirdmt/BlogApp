@@ -1,14 +1,18 @@
 package com.masai.services.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.masai.entities.User;
+import com.masai.exceptions.ResourceNotFoundException;
 import com.masai.payloads.UserDto;
 import com.masai.repository.UserRepo;
 import com.masai.services.UserService;
 
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -22,27 +26,48 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserDto updateUser(UserDto user, Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public UserDto updateUser(UserDto userDto, Integer userId) {
+
+		User user = this.repo.findById(userId).orElseThrow(() -> new ResourceNotFoundException("user", "id", userId));
+
+		user.setName(userDto.getName());
+		user.setEmail(userDto.getEmail());
+		user.setPassword(userDto.getPassword());
+		user.setAbout(userDto.getAbout());
+
+		User updatedUser = this.repo.save(user);
+
+		UserDto userDto1 = this.userToDto(updatedUser);
+
+		return userDto1;
 	}
 
 	@Override
 	public UserDto getUserById(Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		User user = this.repo.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
+
+		UserDto userDto = this.userToDto(user);
+
+		return userDto;
 	}
 
 	@Override
 	public List<UserDto> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<User> userList = this.repo.findAll();
+
+		List<UserDto> userDtoList = userList.stream().map((user) -> this.userToDto(user)).collect(Collectors.toList());
+
+		return userDtoList;
 	}
 
 	@Override
 	public String deleteUser(Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		User user = this.repo.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
+		this.repo.delete(user);
+		return "User Deleted that id is  " + userId;
 	}
 
 	public User dtoToUser(UserDto userDto) {

@@ -74,6 +74,8 @@ public class UserServiceImpl implements UserService {
 		return "User Deleted that id is  " + userId;
 	}
 
+	
+	/// model mapper 
 	public User dtoToUser(UserDto userDto) {
 
 		User user = this.modelMapper.map(userDto, User.class);

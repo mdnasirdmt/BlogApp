@@ -74,14 +74,14 @@ public class UserServiceImpl implements UserService {
 		return "User Deleted that id is  " + userId;
 	}
 
-	
-	/// model mapper 
+	/// model mapper class dependency
 	public User dtoToUser(UserDto userDto) {
 
 		User user = this.modelMapper.map(userDto, User.class);
 		return user;
 	}
 
+	// model mapper manually
 //	public User dtoToUser(UserDto userDto) {
 //
 //		User user = new User();

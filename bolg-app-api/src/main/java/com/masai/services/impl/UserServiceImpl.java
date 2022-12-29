@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
 		user.setEmail(userDto.getEmail());
 		user.setPassword(userDto.getPassword());
 		user.setAbout(userDto.getAbout());
+		user.setMobile(userDto.getMobile());
 
 		User updatedUser = this.repo.save(user);
 
@@ -90,7 +91,7 @@ public class UserServiceImpl implements UserService {
 //		user.setEmail(userDto.getEmail());
 //		user.setAbout(userDto.getPassword());
 //		user.setAbout(userDto.getAbout());
-//
+//		user.setMobile(userDto.getMobile());
 //		return user;
 //
 //	}
@@ -108,6 +109,7 @@ public class UserServiceImpl implements UserService {
 //		userDto.setEmail(user.getEmail());
 //		userDto.setPassword(user.getPassword());
 //		userDto.setAbout(user.getAbout());
+//		user.setMobile(userDto.getMobile());
 //		return userDto;
 //
 //	}

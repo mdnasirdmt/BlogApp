@@ -6,34 +6,26 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "users")
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-public class User {
+@Table(name = "categories")
+public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer categoryId;
 
-	@Column(name = "user_name", nullable = false, length = 100)
-	private String name;
+	@Column(name = "title")
+	private String categoryTitle;
 
-	private String email;
-
-	private String mobile;
-
-	private String password;
-
-	private String about;
-
+	@Column(name = "description")
+	private String categoryDescription;
 }

@@ -72,6 +72,7 @@ public class CategoryController {
 
 		return new ResponseEntity<List<CategoryDto>>(listDtos, HttpStatus.OK);
 
+		
 	}
 
 }

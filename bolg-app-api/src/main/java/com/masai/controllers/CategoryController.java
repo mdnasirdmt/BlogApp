@@ -38,7 +38,7 @@ public class CategoryController {
 
 	}
 
-	@PutMapping("/{categoryId}")
+	@PutMapping("/{categoryId}") // http://localhost:9090/api/categories/1
 	public ResponseEntity<CategoryDto> updateCat(@Valid @RequestBody CategoryDto categoryDto,
 			@PathVariable Integer categoryId) {
 
@@ -48,7 +48,7 @@ public class CategoryController {
 
 	}
 
-	@DeleteMapping("/{catId}")
+	@DeleteMapping("/{catId}") // http://localhost:9090/api/categories/1
 	public ResponseEntity<ApiResponse> deleteUser(@PathVariable Integer catId) {
 
 		this.categoryService.deleteCategory(catId);
@@ -56,7 +56,7 @@ public class CategoryController {
 		return new ResponseEntity<ApiResponse>(new ApiResponse("category deleted", true), HttpStatus.OK);
 	}
 
-	@GetMapping("/{catId}")
+	@GetMapping("/{catId}") // http://localhost:9090/api/categories/1
 	public ResponseEntity<CategoryDto> getCat(@PathVariable Integer catId) {
 
 		CategoryDto categoryDto = this.categoryService.getCategory(catId);
@@ -65,14 +65,13 @@ public class CategoryController {
 
 	}
 
-	@GetMapping("/")
+	@GetMapping("/") // http://localhost:9090/api/categories/
 	public ResponseEntity<List<CategoryDto>> getAllCat() {
 
 		List<CategoryDto> listDtos = this.categoryService.getAllCategories();
 
 		return new ResponseEntity<List<CategoryDto>>(listDtos, HttpStatus.OK);
 
-		
 	}
 
 }

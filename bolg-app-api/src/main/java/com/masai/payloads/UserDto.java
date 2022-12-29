@@ -1,5 +1,8 @@
 package com.masai.payloads;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -14,7 +17,9 @@ import lombok.Setter;
 @Setter
 public class UserDto {
 
-	private Integer id;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private Integer id;
 
 	@NotEmpty
 	@Size(min = 4, message = " user name should be min of 4 characters ")

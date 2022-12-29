@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 public class CategoryDto {
 
-	private Integer categoryId;
+//	private Integer categoryId;
 
 	@NotEmpty
 	private String categoryTitle;

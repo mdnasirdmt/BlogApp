@@ -62,13 +62,18 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public String deletePost(Integer postId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		Post post = this.postRepo.findById(postId)
+				.orElseThrow(() -> new ResourceNotFoundException("post", "post id", postId));
+
+		this.postRepo.delete(post);
+
+		return "post deleted id is " + postId;
 	}
 
 	@Override
 	public Post getPost(Integer postId) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
@@ -86,7 +91,7 @@ public class PostServiceImpl implements PostService {
 
 		List<Post> listPost = this.postRepo.findByCategory(category);
 
-		List<PostDto> listPostDto = listPost.stream().map((post) -> this.mapper.map(listPost, PostDto.class))
+		List<PostDto> listPostDto = listPost.stream().map((post) -> this.mapper.map(post, PostDto.class))
 				.collect(Collectors.toList());
 
 		return listPostDto;
@@ -100,7 +105,7 @@ public class PostServiceImpl implements PostService {
 
 		List<Post> listPost = this.postRepo.findByUser(user);
 
-		List<PostDto> listPostDto = listPost.stream().map((post) -> this.mapper.map(listPost, PostDto.class))
+		List<PostDto> listPostDto = listPost.stream().map((post) -> this.mapper.map(post, PostDto.class))
 				.collect(Collectors.toList());
 
 		return listPostDto;

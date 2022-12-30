@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
 
 		User user = this.repo.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
 		this.repo.delete(user);
-		return "User Deleted that id is  " + userId;
+		return "User Deleted id is  " + userId;
 	}
 
 	/// model mapper class dependency

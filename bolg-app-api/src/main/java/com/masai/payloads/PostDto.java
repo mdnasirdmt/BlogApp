@@ -17,12 +17,13 @@ import lombok.Setter;
 @Setter
 public class PostDto {
 
-//	@NotEmpty
+	@NotEmpty
 	private String title;
 
-//	@NotEmpty
+	@NotEmpty
 	private String content;
 
+	
 	private String imageName;
 
 	private Date addedDate;

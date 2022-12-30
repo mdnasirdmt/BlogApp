@@ -1,10 +1,6 @@
 package com.masai.payloads;
 
 import java.util.Date;
-
-import com.masai.entities.Category;
-import com.masai.entities.User;
-
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

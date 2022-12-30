@@ -1,5 +1,6 @@
 package com.masai.payloads;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,11 +13,11 @@ import lombok.Setter;
 @Getter
 public class CategoryDto {
 
-//	private Integer categoryId;
+	private Integer categoryId;
 
-	@NotEmpty
+	@NotBlank
 	private String categoryTitle;
 
-	@NotEmpty
+	@NotBlank
 	private String categoryDescription;
 }

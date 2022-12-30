@@ -17,9 +17,8 @@ import lombok.Setter;
 @Setter
 public class UserDto {
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	private Integer id;
+
+	private Integer id;
 
 	@NotEmpty
 	@Size(min = 4, message = " user name should be min of 4 characters ")

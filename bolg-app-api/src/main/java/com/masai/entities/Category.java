@@ -26,10 +26,10 @@ import lombok.Setter;
 public class Category {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer categoryId;
 
-	@Column(name = "title")
+	@Column(name = "title", length=100, nullable = false)
 	private String categoryTitle;
 
 	@Column(name = "description")

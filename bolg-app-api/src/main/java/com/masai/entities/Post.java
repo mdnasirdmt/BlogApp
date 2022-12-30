@@ -20,11 +20,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "post")
+@Table(name = "posts")
 public class Post {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer postId;
 
 	@Column(name = "post_title", length = 100, nullable = false)

@@ -1,8 +1,6 @@
 package com.masai.services;
 
 import java.util.List;
-
-import com.masai.entities.Post;
 import com.masai.payloads.PostDto;
 
 public interface PostService {
@@ -32,6 +30,5 @@ public interface PostService {
 	List<PostDto> searchPosts(String keyword);
 
 //	pagination of post
-
 	List<PostDto> paginationOfPost(Integer pageNumber, Integer pageSize);
 }

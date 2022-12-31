@@ -55,32 +55,52 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public Post updatePost(PostDto postDto, Integer postId) {
-		// TODO Auto-generated method stub
-		return null;
+	public PostDto updatePost(PostDto postDto, Integer postId) {
+
+		Post post = this.postRepo.findById(postId)
+				.orElseThrow(() -> new ResourceNotFoundException("post", "post id", postId));
+
+		post.setTitle(postDto.getTitle());
+		post.setContent(postDto.getContent());
+		post.setImageName(postDto.getImageName());
+
+		Post updatedPost = this.postRepo.save(post);
+
+		PostDto updatedPostDto = this.mapper.map(updatedPost, PostDto.class);
+
+		return updatedPostDto;
 	}
 
 	@Override
-	public String deletePost(Integer postId) {
+	public void deletePost(Integer postId) {
 
 		Post post = this.postRepo.findById(postId)
 				.orElseThrow(() -> new ResourceNotFoundException("post", "post id", postId));
 
 		this.postRepo.delete(post);
 
-		return "post deleted id is " + postId;
 	}
 
 	@Override
-	public Post getPost(Integer postId) {
+	public PostDto getPost(Integer postId) {
 
-		return null;
+		Post post = this.postRepo.findById(postId)
+				.orElseThrow(() -> new ResourceNotFoundException("post", "post id", postId));
+
+		PostDto postDto = this.mapper.map(post, PostDto.class);
+
+		return postDto;
 	}
 
 	@Override
-	public List<Post> getAllPost() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<PostDto> getAllPost() {
+
+		List<Post> listPost = this.postRepo.findAll();
+
+		List<PostDto> listPostDto = listPost.stream().map((post) -> this.mapper.map(post, PostDto.class))
+				.collect(Collectors.toList());
+
+		return listPostDto;
 	}
 
 	@Override
@@ -112,7 +132,7 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<Post> searchPosts(String keyword) {
+	public List<PostDto> searchPosts(String keyword) {
 		// TODO Auto-generated method stub
 		return null;
 	}

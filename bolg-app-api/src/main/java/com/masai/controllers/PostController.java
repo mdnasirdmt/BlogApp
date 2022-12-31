@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,6 @@ public class PostController {
 	private PostService postService;
 
 //	save post
-
 	@PostMapping("/user/{userId}/category/{categoryId}/posts")
 	public ResponseEntity<PostDto> createPost(@Valid @RequestBody PostDto postDto, @PathVariable Integer userId,
 			@PathVariable Integer categoryId) {
@@ -38,7 +38,6 @@ public class PostController {
 	}
 
 //	get by user
-
 	@GetMapping("/user/{userId}/post")
 	public ResponseEntity<List<PostDto>> getPostByUser(@Valid @PathVariable Integer userId) {
 
@@ -59,12 +58,42 @@ public class PostController {
 	}
 
 //	delete post
-	@DeleteMapping("/postId")
-	public ResponseEntity<ApiResponse> deletePosts(@PathVariable Integer postId) {
+	@DeleteMapping("/{postId}")
+	public ApiResponse deletePosts(@PathVariable Integer postId) {
 
 		this.postService.deletePost(postId);
 
-		return new ResponseEntity<ApiResponse>(new ApiResponse("post deleted id id ", false), HttpStatus.OK);
+		return new ApiResponse("post deleted id is " + postId, true);
+
+	}
+
+//	get post by idS
+	@GetMapping("/{postId}")
+	public ResponseEntity<PostDto> getPostById(@PathVariable Integer postId) {
+
+		PostDto postDto = this.postService.getPost(postId);
+
+		return new ResponseEntity<PostDto>(postDto, HttpStatus.OK);
+
+	}
+
+//	get all post
+	@GetMapping("/")
+	public ResponseEntity<List<PostDto>> getAllPosts() {
+
+		List<PostDto> allPost = this.postService.getAllPost();
+
+		return new ResponseEntity<List<PostDto>>(allPost, HttpStatus.OK);
+
+	}
+
+//	update post
+	@PutMapping("/{postId}")
+	public ResponseEntity<PostDto> updatePostById(@PathVariable Integer postId, @RequestBody PostDto postDto) {
+
+		PostDto updatePost = this.postService.updatePost(postDto, postId);
+
+		return new ResponseEntity<PostDto>(updatePost, HttpStatus.OK);
 
 	}
 

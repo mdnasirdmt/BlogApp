@@ -3,11 +3,12 @@ package com.masai.services.impl;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import com.masai.entities.Category;
 import com.masai.entities.Post;
 import com.masai.entities.User;
@@ -135,6 +136,21 @@ public class PostServiceImpl implements PostService {
 	public List<PostDto> searchPosts(String keyword) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<PostDto> paginationOfPost(Integer pageNumber, Integer pageSize) {
+
+		Pageable p = PageRequest.of(pageNumber, pageSize);
+
+		Page<Post> pagePost = this.postRepo.findAll(p);
+
+		List<Post> content = pagePost.getContent();
+
+		List<PostDto> listPostDto = content.stream().map((post) -> this.mapper.map(post, PostDto.class))
+				.collect(Collectors.toList());
+
+		return listPostDto;
 	}
 
 }

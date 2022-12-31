@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.exceptions.ApiResponse;
@@ -94,6 +95,18 @@ public class PostController {
 		PostDto updatePost = this.postService.updatePost(postDto, postId);
 
 		return new ResponseEntity<PostDto>(updatePost, HttpStatus.OK);
+
+	}
+
+//	get page by page number and by page size
+	@GetMapping("/posts/")
+	public ResponseEntity<List<PostDto>> getPostByPageNumber(
+			@RequestParam(value = "pageNumber", defaultValue = "1", required = false) Integer pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "5", required = false) Integer pageSize) {
+
+		List<PostDto> allPost = this.postService.paginationOfPost(pageNumber, pageSize);
+
+		return new ResponseEntity<List<PostDto>>(allPost, HttpStatus.OK);
 
 	}
 

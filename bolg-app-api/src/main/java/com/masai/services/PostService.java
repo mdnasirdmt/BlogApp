@@ -30,4 +30,8 @@ public interface PostService {
 
 // search post 
 	List<PostDto> searchPosts(String keyword);
+
+//	pagination of post
+
+	List<PostDto> paginationOfPost(Integer pageNumber, Integer pageSize);
 }

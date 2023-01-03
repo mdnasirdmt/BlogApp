@@ -2,6 +2,7 @@ package com.masai.services;
 
 import java.util.List;
 import com.masai.payloads.PostDto;
+import com.masai.utils.PostResponse;
 
 public interface PostService {
 
@@ -31,4 +32,11 @@ public interface PostService {
 
 //	pagination of post
 	List<PostDto> paginationOfPost(Integer pageNumber, Integer pageSize);
+
+//	pagination and get all post 
+	PostResponse getAllPosts(Integer pageNumber, Integer pageSize);
+
+//	get page of post by sorting
+	PostResponse getPageBySorted(Integer pageNumber, Integer pageSize, String sortBy, String sortDir);
+
 }

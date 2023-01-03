@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.masai.exceptions.ApiResponse;
 import com.masai.payloads.PostDto;
 import com.masai.services.PostService;
+import com.masai.utils.PostResponse;
 
 import jakarta.validation.Valid;
 
@@ -107,6 +108,32 @@ public class PostController {
 		List<PostDto> allPost = this.postService.paginationOfPost(pageNumber, pageSize);
 
 		return new ResponseEntity<List<PostDto>>(allPost, HttpStatus.OK);
+
+	}
+
+//	get page of post as  response
+	@GetMapping("/page/")
+	public ResponseEntity<PostResponse> getAllPostByPageNumer(
+			@RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize) {
+
+		PostResponse postRes = this.postService.getAllPosts(pageNumber, pageSize);
+
+		return new ResponseEntity<PostResponse>(postRes, HttpStatus.OK);
+
+	}
+
+//	get page by sorted
+	@GetMapping("/sortBy/")
+	public ResponseEntity<PostResponse> getPageBySorted(
+			@RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize,
+			@RequestParam(value = "sortBy", defaultValue = "postId", required = false) String sortBy,
+			@RequestParam(value = "sortDir", defaultValue = "asc", required = false) String sortDir) {
+
+		PostResponse postResponse = this.postService.getPageBySorted(pageNumber, pageSize, sortBy, sortDir);
+
+		return new ResponseEntity<PostResponse>(postResponse, HttpStatus.OK);
 
 	}
 

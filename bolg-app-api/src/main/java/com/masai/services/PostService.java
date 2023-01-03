@@ -27,9 +27,6 @@ public interface PostService {
 // get all posts by user
 	List<PostDto> getPostsByUser(Integer userId);
 
-// search post 
-	List<PostDto> searchPosts(String keyword);
-
 //	pagination of post
 	List<PostDto> paginationOfPost(Integer pageNumber, Integer pageSize);
 
@@ -39,4 +36,9 @@ public interface PostService {
 //	get page of post by sorting
 	PostResponse getPageBySorted(Integer pageNumber, Integer pageSize, String sortBy, String sortDir);
 
+// search post by title
+	List<PostDto> searchPostsByTitle(String keyword);
+
+// search post by content
+//	List<PostDto> searchPostsByContent(String key);
 }

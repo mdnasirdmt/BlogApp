@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.masai.exceptions.ApiResponse;
 import com.masai.payloads.PostDto;
 import com.masai.services.PostService;
+import com.masai.utils.ConstValue;
 import com.masai.utils.PostResponse;
 
 import jakarta.validation.Valid;
@@ -102,8 +103,8 @@ public class PostController {
 //	get page by page number and by page size
 	@GetMapping("/posts/")
 	public ResponseEntity<List<PostDto>> getPostByPageNumber(
-			@RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
-			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize) {
+			@RequestParam(value = "pageNumber", defaultValue = ConstValue.PAGE_NUMBER, required = false) Integer pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = ConstValue.PAGE_SIZE, required = false) Integer pageSize) {
 
 		List<PostDto> allPost = this.postService.paginationOfPost(pageNumber, pageSize);
 
@@ -114,8 +115,8 @@ public class PostController {
 //	get page of post as  response
 	@GetMapping("/page/")
 	public ResponseEntity<PostResponse> getAllPostByPageNumer(
-			@RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
-			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize) {
+			@RequestParam(value = "pageNumber", defaultValue = ConstValue.PAGE_NUMBER, required = false) Integer pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = ConstValue.PAGE_SIZE, required = false) Integer pageSize) {
 
 		PostResponse postRes = this.postService.getAllPosts(pageNumber, pageSize);
 
@@ -126,10 +127,10 @@ public class PostController {
 //	get page by sorted
 	@GetMapping("/sortBy/")
 	public ResponseEntity<PostResponse> getPageBySorted(
-			@RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
-			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize,
-			@RequestParam(value = "sortBy", defaultValue = "postId", required = false) String sortBy,
-			@RequestParam(value = "sortDir", defaultValue = "asc", required = false) String sortDir) {
+			@RequestParam(value = "pageNumber", defaultValue = ConstValue.PAGE_NUMBER, required = false) Integer pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = ConstValue.PAGE_SIZE, required = false) Integer pageSize,
+			@RequestParam(value = "sortBy", defaultValue = ConstValue.SORT_BY, required = false) String sortBy,
+			@RequestParam(value = "sortDir", defaultValue = ConstValue.SORT_DIR, required = false) String sortDir) {
 
 		PostResponse postResponse = this.postService.getPageBySorted(pageNumber, pageSize, sortBy, sortDir);
 
@@ -137,4 +138,23 @@ public class PostController {
 
 	}
 
+//	get post by serching title
+	@GetMapping("/search/{keyword}")
+	public ResponseEntity<List<PostDto>> PostByTitle(@PathVariable String keyword) {
+
+		List<PostDto> searchPosts = this.postService.searchPostsByTitle(keyword);
+
+		return new ResponseEntity<List<PostDto>>(searchPosts, HttpStatus.OK);
+
+	}
+
+////	get post by serching id
+//	@GetMapping("/search/{id}")
+//	public ResponseEntity<List<PostDto>> PostByContent(@PathVariable String key) {
+//
+//		List<PostDto> searchPosts = this.postService.searchPostsByContent(key);
+//
+//		return new ResponseEntity<List<PostDto>>(searchPosts, HttpStatus.OK);
+//
+//	}
 }

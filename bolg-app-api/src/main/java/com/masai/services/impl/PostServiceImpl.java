@@ -135,12 +135,6 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<PostDto> searchPosts(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<PostDto> paginationOfPost(Integer pageNumber, Integer pageSize) {
 
 		Pageable p = PageRequest.of(pageNumber, pageSize);
@@ -188,7 +182,7 @@ public class PostServiceImpl implements PostService {
 //		} else {
 //			sort = Sort.by(sortBy).ascending();
 //		}
-		
+
 // using tenary operator sorting
 		Sort sort = (sortDir.equalsIgnoreCase("des")) ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
 
@@ -211,5 +205,27 @@ public class PostServiceImpl implements PostService {
 
 		return postResponse;
 	}
+
+	@Override
+	public List<PostDto> searchPostsByTitle(String keyword) {
+
+		List<Post> listPost = this.postRepo.findByTitleContaining(keyword);
+
+		List<PostDto> listPostDto = listPost.stream().map((post) -> this.mapper.map(post, PostDto.class))
+				.collect(Collectors.toList());
+
+		return listPostDto;
+	}
+
+//	@Override
+//	public List<PostDto> searchPostsByContent(String key) {
+//
+//		List<Post> listPost = this.postRepo.searchByContent("%"+key+"%");
+//
+//		List<PostDto> listPostDto = listPost.stream().map((post) -> this.mapper.map(post, PostDto.class))
+//				.collect(Collectors.toList());
+//
+//		return listPostDto;
+//	}
 
 }

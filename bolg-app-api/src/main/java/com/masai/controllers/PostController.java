@@ -101,8 +101,8 @@ public class PostController {
 //	get page by page number and by page size
 	@GetMapping("/posts/")
 	public ResponseEntity<List<PostDto>> getPostByPageNumber(
-			@RequestParam(value = "pageNumber", defaultValue = "1", required = false) Integer pageNumber,
-			@RequestParam(value = "pageSize", defaultValue = "5", required = false) Integer pageSize) {
+			@RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize) {
 
 		List<PostDto> allPost = this.postService.paginationOfPost(pageNumber, pageSize);
 

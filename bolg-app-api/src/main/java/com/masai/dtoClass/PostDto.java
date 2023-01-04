@@ -1,6 +1,10 @@
 package com.masai.dtoClass;
 
 import java.util.Date;
+import java.util.Set;
+
+import com.masai.entities.Comment;
+
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,5 +32,7 @@ public class PostDto {
 	private CategoryDto category;
 
 	private UserDto user;
+	
+	private Set<CommentDto> comments;
 
 }

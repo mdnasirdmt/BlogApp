@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.masai.dtoClass.PostDto;
 import com.masai.entities.Category;
 import com.masai.entities.Post;
 import com.masai.entities.User;
-import com.masai.payloads.PostDto;
 
 @Repository
 public interface PostRepo extends JpaRepository<Post, Integer> {

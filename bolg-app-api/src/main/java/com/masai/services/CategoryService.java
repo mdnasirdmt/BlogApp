@@ -2,7 +2,7 @@ package com.masai.services;
 
 import java.util.List;
 
-import com.masai.payloads.CategoryDto;
+import com.masai.dtoClass.CategoryDto;
 
 public interface CategoryService {
 

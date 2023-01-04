@@ -1,3 +1,4 @@
+package com.masai.dtoClass;
 //package com.masai.payloads;
 //
 //import lombok.AllArgsConstructor;

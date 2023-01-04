@@ -2,7 +2,7 @@ package com.masai.utils;
 
 import java.util.List;
 
-import com.masai.payloads.PostDto;
+import com.masai.dtoClass.PostDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

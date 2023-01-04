@@ -1,4 +1,4 @@
-package com.masai.payloads;
+package com.masai.dtoClass;
 
 import java.util.Date;
 import jakarta.validation.constraints.NotEmpty;

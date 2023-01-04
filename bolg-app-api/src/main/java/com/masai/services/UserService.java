@@ -1,7 +1,8 @@
 package com.masai.services;
 
 import java.util.List;
-import com.masai.payloads.UserDto;
+
+import com.masai.dtoClass.UserDto;
 
 public interface UserService {
 

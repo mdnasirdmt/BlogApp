@@ -10,11 +10,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import com.masai.dtoClass.PostDto;
 import com.masai.entities.Category;
 import com.masai.entities.Post;
 import com.masai.entities.User;
 import com.masai.exceptions.ResourceNotFoundException;
-import com.masai.payloads.PostDto;
 import com.masai.repository.CategoryRepo;
 import com.masai.repository.PostRepo;
 import com.masai.repository.UserRepo;

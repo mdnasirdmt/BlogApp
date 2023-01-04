@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.masai.dtoClass.PostDto;
 import com.masai.exceptions.ApiResponse;
-import com.masai.payloads.PostDto;
 import com.masai.services.PostService;
 import com.masai.utils.ConstValue;
 import com.masai.utils.PostResponse;

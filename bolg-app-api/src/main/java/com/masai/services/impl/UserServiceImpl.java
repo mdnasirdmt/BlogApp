@@ -7,9 +7,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.masai.dtoClass.UserDto;
 import com.masai.entities.User;
 import com.masai.exceptions.ResourceNotFoundException;
-import com.masai.payloads.UserDto;
 import com.masai.repository.UserRepo;
 import com.masai.services.UserService;
 

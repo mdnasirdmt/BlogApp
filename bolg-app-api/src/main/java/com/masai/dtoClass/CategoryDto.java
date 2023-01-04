@@ -1,4 +1,4 @@
-package com.masai.payloads;
+package com.masai.dtoClass;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

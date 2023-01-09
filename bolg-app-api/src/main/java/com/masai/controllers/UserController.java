@@ -2,6 +2,7 @@ package com.masai.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ import com.masai.dtoClass.UserDto;
 import com.masai.exceptions.ApiResponse;
 import com.masai.services.UserService;
 
-import jakarta.validation.Valid;
+//import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/users")

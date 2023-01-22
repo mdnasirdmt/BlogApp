@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.masai.dtoClass.PostDto;
 import com.masai.exceptions.ApiResponse;
+import com.masai.payLoad.PostDto;
 import com.masai.services.FileService;
 import com.masai.services.PostService;
 import com.masai.utils.ConstValue;

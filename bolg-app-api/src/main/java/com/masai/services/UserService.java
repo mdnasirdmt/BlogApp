@@ -2,7 +2,7 @@ package com.masai.services;
 
 import java.util.List;
 
-import com.masai.dtoClass.UserDto;
+import com.masai.payLoad.UserDto;
 
 public interface UserService {
 

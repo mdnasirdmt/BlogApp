@@ -2,7 +2,7 @@ package com.masai.services;
 
 import java.util.List;
 
-import com.masai.dtoClass.PostDto;
+import com.masai.payLoad.PostDto;
 import com.masai.utils.PostResponse;
 
 public interface PostService {

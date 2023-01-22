@@ -7,9 +7,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.masai.dtoClass.CategoryDto;
 import com.masai.entities.Category;
 import com.masai.exceptions.ResourceNotFoundException;
+import com.masai.payLoad.CategoryDto;
 import com.masai.repository.CategoryRepo;
 import com.masai.services.CategoryService;
 

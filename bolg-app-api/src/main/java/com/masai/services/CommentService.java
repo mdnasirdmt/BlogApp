@@ -1,6 +1,6 @@
 package com.masai.services;
 
-import com.masai.dtoClass.CommentDto;
+import com.masai.payLoad.CommentDto;
 
 public interface CommentService {
 

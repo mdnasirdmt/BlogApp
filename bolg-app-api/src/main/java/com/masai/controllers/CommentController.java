@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.masai.dtoClass.CommentDto;
 import com.masai.exceptions.ApiResponse;
+import com.masai.payLoad.CommentDto;
 import com.masai.services.CommentService;
 
 @RestController

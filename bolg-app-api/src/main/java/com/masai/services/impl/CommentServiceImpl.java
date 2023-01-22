@@ -4,10 +4,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.masai.dtoClass.CommentDto;
 import com.masai.entities.Comment;
 import com.masai.entities.Post;
 import com.masai.exceptions.ResourceNotFoundException;
+import com.masai.payLoad.CommentDto;
 import com.masai.repository.CommentRepo;
 import com.masai.repository.PostRepo;
 import com.masai.services.CommentService;

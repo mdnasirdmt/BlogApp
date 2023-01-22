@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.masai.dtoClass.CategoryDto;
 import com.masai.exceptions.ApiResponse;
+import com.masai.payLoad.CategoryDto;
 import com.masai.services.CategoryService;
 
 //import jakarta.validation.Valid;

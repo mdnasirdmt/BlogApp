@@ -1,4 +1,4 @@
-package com.masai.dtoClass;
+package com.masai.payLoad;
 
 import javax.validation.constraints.NotBlank;
 
